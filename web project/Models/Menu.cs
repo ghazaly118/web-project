@@ -20,6 +20,8 @@ namespace web_project.Models
         public string DishDiscription { get; set; }
         [Required]
         public double Price { get; set; }
+        [Required]
+        public string DishTypee { get; set; }
 
 
     }

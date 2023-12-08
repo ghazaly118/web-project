@@ -33,6 +33,17 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="DishTypee" class="control-label"></label>
+                <select asp-for="DishTypee" class="form-control" >
+                    <option value="appetizer">appetizer</option>
+                    <option value="main course">main course</option>
+                    <option value="dessert">dessert</option>
+
+                </select>
+                <span asp-validation-for="DishTypee" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -43,6 +54,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

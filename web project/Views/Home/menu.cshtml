@@ -6,33 +6,107 @@
 <body>
     <div class="container mt-5">
         <h1>Menu</h1>
-
+        <button class="btn btn-success mb-4 m" onclick="scrollToSection('appetizers')">Appetizers</button>
+        <button class="btn btn-success mb-4"onclick="scrollToSection('main_courses')">Main Courses</button>
+        <button class="btn btn-success mb-4" onclick="scrollToSection('desserts')"> Desserts</button>
         <div class="row">
             <!-- Example menu items -->
              @if (Model != null)
             {
-                @foreach (var item in Model )
+ <h3 id="appetizers">Apetizers</h3>
+                @foreach (var item in Model)
                 {
                    
-                    <div class="card mb-2">
-                        <div class="row no-gutters">
-                            <div class="col-md-2">
-                                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D" class="card-img" alt="Image">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="card-body">
-                                    <h2 class="card-title">@item.DishName</h2>
-                                    <p class="flex-grow-1">@item.DishDiscription</p>
-                                    <div class="flex-grow-1">
-                                        <p class="btn btn-success mt-auto">@item.Price</p>
+                    @if (item.DishTypee.Equals("appetizer  ") == true)
+                    {
+
+                        <div class="card mb-2">
+                            <div class="row no-gutters">
+                                <div class="col-md-2">
+                                    <img src="@item.Image" class="card-img" alt="Image">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h2 class="card-title">@item.DishName</h2>
+                                        <p class="flex-grow-1">@item.DishDiscription</p>
+                                        <div class="flex-grow-1">
+                                            <p class="btn btn-success mt-auto">@item.Price</p>
                                         </div>
-                                    <!-- Other content or buttons here -->
+                                        <!-- Other content or buttons here -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br ><br >
-               }}
-            </div>
+                        <br>
+
+                        <br>
+                    }
+
+                } <h3 id="main_courses">Main Courses</h3>
+                @foreach (var item in Model)
+                {
+                   
+
+                    @if (item.DishTypee.Equals("main course"))
+                    {
+
+                        <div class="card mb-2">
+                            <div class="row no-gutters">
+                                <div class="col-md-2">
+                                    <img src="@item.Image" class="card-img" alt="Image">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h2 class="card-title">@item.DishName</h2>
+                                        <p class="flex-grow-1">@item.DishDiscription</p>
+                                        <div class="flex-grow-1">
+                                            <p class="btn btn-success mt-auto">@item.Price</p>
+                                        </div>
+                                        <!-- Other content or buttons here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <br>
+                    }
+
+                }  <h3 id="desserts">Desserts</h3>
+                @foreach (var item in Model)
+                {
+
+                  
+                    @if (item.DishTypee.Equals("dessert    "))
+                    {
+
+                        <div class="card mb-2">
+                            <div class="row no-gutters">
+                                <div class="col-md-2">
+                                    <img src="@item.Image" class="card-img" alt="Image">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <h2 class="card-title">@item.DishName</h2>
+                                        <p class="flex-grow-1">@item.DishDiscription</p>
+                                        <div class="flex-grow-1">
+                                            <p class="btn btn-success mt-auto">@item.Price</p>
+                                        </div>
+                                        <!-- Other content or buttons here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                        <br>
+                    }
+
+                }
+
+            }
+        </div>
 </div>
+  
 </body>
+<script src=~/js/JavaScript.js />

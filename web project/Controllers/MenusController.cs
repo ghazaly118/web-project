@@ -54,7 +54,7 @@ namespace web_project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Image,DishName,DishDiscription,Price")] Menu menu)
+        public async Task<IActionResult> Create([Bind("id,Image,DishName,DishDiscription,Price,DishTypee")] Menu menu)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace web_project.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Image,DishName,DishDiscription,Price")] Menu menu)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Image,DishName,DishDiscription,Price,DishTypee")] Menu menu)
         {
             if (id != menu.id)
             {
