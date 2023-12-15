@@ -15,5 +15,6 @@ namespace web_project.Data
         }
 
         public DbSet<web_project.Models.Menu> Menu { get; set; } = default!;
+        public DbSet<web_project.Models.Complaints> Complaints { get; set; } = default!;
     }
 }

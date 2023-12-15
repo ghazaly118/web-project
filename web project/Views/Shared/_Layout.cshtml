@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@{
+    bool isLoggedIn = ViewData["login"] as bool? ?? false;
+}
+
+<!-- Rest of your code -->
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -12,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">web_project</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Restaurant</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,15 +29,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Menus" asp-action="Create">Create</a>
-                        </li>
+                      
+                        
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="menu">Menu</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-controller="Complaints" asp-action="Create">contact us</a>
+						</li>
+                    
+                        
+                        @if (!isLoggedIn)
+                        {
+
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LoginAdmin" onclick="" >Admin Login</a></li>
+                        }
+                        else
+                        { <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Menus" asp-action="Create">Create new dish</a>
+                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Menus" asp-action="Index">All dishes</a>
+                            </li>
+           
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Complaints" asp-action="Index" onclick="">All Complaints</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout" onclick="">Logout</a></li>
+
+                        }
+
+
+
                     </ul>
                 </div>
             </div>
@@ -44,7 +75,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - web_project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+         To know who we are- <a asp-area="" asp-controller="Home" asp-action="About">About</a>
+        </div>
+        <div class="container">
+           For help or complaint   <a asp-area="" asp-controller="Complaints" asp-action="Create">Contact us</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

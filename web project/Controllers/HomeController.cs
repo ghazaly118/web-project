@@ -1,53 +1,125 @@
-using Elfie.Serialization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
-using System.Linq; // Import LINQ for .ToList() method
 using web_project.Data;
 using web_project.Models;
 
 namespace web_project.Controllers
 {
+
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly web_projectContext _context; // Update the type of _context here
+        public static bool isLoggedIn;
 
-        public HomeController(ILogger<HomeController> logger, web_projectContext context) // Update the constructor parameter
+        private readonly web_projectContext _context;
+        public readonly Login _loginModel;
+
+        public HomeController(web_projectContext context)
         {
-            _logger = logger;
-            _context = context; // Assign the injected context to the private variable
+            _context = context;
+            _loginModel = new Login();
         }
-
-        // Other actions...
 
         public IActionResult Menu()
         {
-            var menus = _context.Menu.ToList(); // Fetching a list of Menu items from the database
-            return View(menus); // Passing the list of Menu items to the view
+            if (isLoggedIn)
+            {
+                ViewData["login"] = isLoggedIn;
+                var menus = _context.Menu.ToList();
+                return View(menus);
+            }
+            else
+            {
+                isLoggedIn = false;
+                ViewData["login"] = isLoggedIn;
+                var menus = _context.Menu.ToList();
+                return View(menus);
+            }
         }
-
-        // Other actions...
-
-    
-
-
-public IActionResult Index()
+        [HttpGet]
+        public IActionResult LoginAdmin()
         {
-            return View();
+            if (_loginModel.IsLoggedIn)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(_loginModel);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult ValidateLogin(Login loginModel)
         {
-            return View();
+
+            if (loginModel.Username == "Admin" && loginModel.Password == "123")
+            {
+                isLoggedIn = true;
+                ViewData["login"] = isLoggedIn;
+                loginModel.IsLoggedIn = true;
+
+
+                return View("Index");
+            }
+            else
+            {
+                ModelState.AddModelError("Password", "the username or password is wrong");
+
+            }
+            return View("LoginAdmin", loginModel);
         }
-    
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Logout()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+
+            isLoggedIn = false;
+            ViewData["login"] = isLoggedIn;
+            _loginModel.IsLoggedIn = false;
+
+            return RedirectToAction("Index", isLoggedIn);
+
         }
+        public IActionResult Index()
+        {
+            if (isLoggedIn)
+            {
+                    
+                return View("Index");
+            }
+            else
+            {
+                isLoggedIn = false;
+                ViewData["login"] = isLoggedIn;
+                return View();
+            }
+
+        }
+
+
+
+        public IActionResult About()
+
+
+        {
+            if (isLoggedIn == true)
+            {
+                ViewData["login"] = isLoggedIn;
+                return View("About");
+            }
+            else
+            {
+                isLoggedIn = false; 
+                ViewData["login"] = false;
+                return View();
+            }
+        }
+
+
+
+   
+
+    public IActionResult Error()
+    {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-}
+} }
+

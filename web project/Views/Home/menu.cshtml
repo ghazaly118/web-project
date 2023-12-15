@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "menu";
 }
-<body>
+<body style=" background-color: burlywood">
     <div class="container mt-5">
         <h1>Menu</h1>
         <button class="btn btn-success mb-4 m" onclick="scrollToSection('appetizers')">Appetizers</button>
@@ -20,17 +20,17 @@
                     @if (item.DishTypee.Equals("appetizer  ") == true)
                     {
 
-                        <div class="card mb-2">
-                            <div class="row no-gutters">
+                        <div class="card mb-2" style="background-color: blanchedalmond;">
+                            <div class="row no-gutters" >
                                 <div class="col-md-2">
-                                    <img src="@item.Image" class="card-img" alt="Image">
+                                    <img src="/pics/@item.Image" class="card-img" alt="Image">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body">
                                         <h2 class="card-title">@item.DishName</h2>
                                         <p class="flex-grow-1">@item.DishDiscription</p>
                                         <div class="flex-grow-1">
-                                            <p class="btn btn-success mt-auto">@item.Price</p>
+                                            <p class="btn btn-success mt-auto">@item.Price EGP</p>
                                         </div>
                                         <!-- Other content or buttons here -->
                                     </div>
@@ -50,17 +50,18 @@
                     @if (item.DishTypee.Equals("main course"))
                     {
 
-                        <div class="card mb-2">
+                        
+					<div class="card mb-2" style="background-color: blanchedalmond;">
                             <div class="row no-gutters">
                                 <div class="col-md-2">
-                                    <img src="@item.Image" class="card-img" alt="Image">
+                                    <img src="/pics/@item.Image" class="card-img" alt="Image">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body">
                                         <h2 class="card-title">@item.DishName</h2>
                                         <p class="flex-grow-1">@item.DishDiscription</p>
                                         <div class="flex-grow-1">
-                                            <p class="btn btn-success mt-auto">@item.Price</p>
+                                            <p class="btn btn-success mt-auto">@item.Price EGP</p>
                                         </div>
                                         <!-- Other content or buttons here -->
                                     </div>
@@ -80,17 +81,17 @@
                     @if (item.DishTypee.Equals("dessert    "))
                     {
 
-                        <div class="card mb-2">
+                        <div class="card mb-2 " style="background-color: blanchedalmond;">
                             <div class="row no-gutters">
                                 <div class="col-md-2">
-                                    <img src="@item.Image" class="card-img" alt="Image">
+                                    <img src="/pics/@item.Image" class="card-img" alt="Image">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body">
                                         <h2 class="card-title">@item.DishName</h2>
                                         <p class="flex-grow-1">@item.DishDiscription</p>
                                         <div class="flex-grow-1">
-                                            <p class="btn btn-success mt-auto">@item.Price</p>
+                                            <p class="btn btn-success mt-auto">@item.Price EGP</p>
                                         </div>
                                         <!-- Other content or buttons here -->
                                     </div>

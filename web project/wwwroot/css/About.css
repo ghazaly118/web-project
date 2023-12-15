@@ -1,0 +1,116 @@
+﻿#AHMN {
+    background-color: blanchedalmond;
+    color: rgb(red, green, blue);
+    margin: 5%;
+    height: auto;
+    width: fit-content;
+    border-radius: 20px;
+    margin-left: -0.5%;
+    font-style: oblique;
+}
+
+#desc {
+    background-color: blanchedalmond;
+    margin-left: -0.5%;
+    width: fit-content;
+    height: fit-content;
+    border: 20px;
+    border-color: black;
+    border-radius: 15px;
+    font-size: large;
+    font-family: cursive;
+}
+
+.sec {
+    background-color: blanchedalmond;
+    margin-left: -0.5%;
+    width: fit-content;
+    height: fit-content;
+    border: 20px;
+    border-color: black;
+    border-radius: 30px;
+    font-size: large;
+    font-family: cursive;
+}
+
+.cairo {
+    background-color: blanchedalmond;
+    margin-left: -0.5%;
+    width: fit-content;
+    height: fit-content;
+    border: 20px;
+    border-color: black;
+    border-radius: 30px;
+    font-size: large;
+    font-family: cursive;
+}
+
+.kit {
+    background-color: blanchedalmond;
+    text-align: center;
+    margin-top: -4%;
+    height: auto;
+    border-radius: 20px;
+    font-style: oblique;
+}
+
+.alex {
+    margin-top: -5%;
+    margin-left: 40%;
+    background-color: blanchedalmond;
+    border: 20px;
+    border-color: black;
+    border-radius: 30px;
+    font-size: large;
+    font-family: cursive;
+    width: fit-content;
+}
+
+.portsaid {
+    background-color: blanchedalmond;
+    margin-left: 68%;
+    margin-top: -2%;
+    width: fit-content;
+    height: fit-content;
+    border: 20px;
+    border-color: black;
+    border-radius: 25px;
+    font-size: large;
+    font-family: cursive;
+}
+
+.photos {
+}
+
+.photo {
+    font-style: oblique;
+    display: block;
+    margin-right: auto;
+    width: fit-content;
+    color: black;
+    font-family: cursive;
+}
+
+.photo2 {
+    font-style: oblique;
+    display: block;
+    margin-top: -30%;
+    margin-left: auto;
+    width: fit-content;
+    color: black;
+    border-color: coral;
+    border-width: 5px;
+    border-radius: 5%;
+    font-family: cursive;
+}
+
+.end {
+    margin-top: 5%;
+    margin-left: 35%;
+    background-color: blanchedalmond;
+    font-size: large;
+    font-family: cursive;
+    width: fit-content;
+    border: 5px;
+    border-color: antiquewhite;
+}

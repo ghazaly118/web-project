@@ -10,148 +10,230 @@ using web_project.Models;
 
 namespace web_project.Controllers
 {
-    public class MenusController : Controller
-    {
-        private readonly web_projectContext _context;
+	public class MenusController : Controller
+	{
+		private readonly web_projectContext _context;
 
-        public MenusController(web_projectContext context)
-        {
-            _context = context;
-        }
+		public MenusController(web_projectContext context)
+		{
+			_context = context;
+		}
 
-        // GET: Menus
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Menu.ToListAsync());
-        }
+		// GET: Menus
+		public async Task<IActionResult> Index()
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return View(await _context.Menu.ToListAsync());
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+		}
 
-        // GET: Menus/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: Menus/Details/5
+		public async Task<IActionResult> Details(int? id)
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				if (id == null)
+			{
+				return NotFound();
+			}
 
-            var menu = await _context.Menu
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (menu == null)
-            {
-                return NotFound();
-            }
+			var menu = await _context.Menu
+				.FirstOrDefaultAsync(m => m.id == id);
+			if (menu == null)
+			{
+				return NotFound();
+			}
 
-            return View(menu);
-        }
+			return View(menu);
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+			
+		}
 
-        // GET: Menus/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+		// GET: Menus/Create
+		public IActionResult Create()
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return View();
+			
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+			
+		}
 
-        // POST: Menus/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Image,DishName,DishDiscription,Price,DishTypee")] Menu menu)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(menu);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(menu);
-        }
+		// POST: Menus/Create
+		// To protect from overposting attacks, enable the specific properties you want to bind to.
+		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Create([Bind("id,Image,DishName,DishDiscription,Price,DishTypee")] Menu menu)
+		{
+			if (HomeController.isLoggedIn)
+			{ViewData["login"] = HomeController.isLoggedIn;
+				if (ModelState.IsValid)
+			{
+				_context.Add(menu);
+				await _context.SaveChangesAsync();
+				return RedirectToAction(nameof(Index));
+			}
+				return View(menu);
+				
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+			
+			
 
-        // GET: Menus/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		}
 
-            var menu = await _context.Menu.FindAsync(id);
-            if (menu == null)
-            {
-                return NotFound();
-            }
-            return View(menu);
-        }
+		// GET: Menus/Edit/5
+		public async Task<IActionResult> Edit(int? id)
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+					if (id == null)
+			{
+				return NotFound();
+			}
 
-        // POST: Menus/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Image,DishName,DishDiscription,Price,DishTypee")] Menu menu)
-        {
-            if (id != menu.id)
-            {
-                return NotFound();
-            }
+			var menu = await _context.Menu.FindAsync(id);
+			if (menu == null)
+			{
+				return NotFound();
+			}
+			return View(menu);
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+		
+		}
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(menu);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!MenuExists(menu.id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(menu);
-        }
+		// POST: Menus/Edit/5
+		// To protect from overposting attacks, enable the specific properties you want to bind to.
+		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Edit(int id, [Bind("id,Image,DishName,DishDiscription,Price,DishTypee")] Menu menu)
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				if (id != menu.id)
+			{
+				return NotFound();
+			}
 
-        // GET: Menus/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					_context.Update(menu);
+					await _context.SaveChangesAsync();
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					if (!MenuExists(menu.id))
+					{
+						return NotFound();
+					}
+					else
+					{
+						throw;
+					}
+				}
+				return RedirectToAction(nameof(Index));
+			}
+			return View(menu);
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+			
+		}
 
-            var menu = await _context.Menu
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (menu == null)
-            {
-                return NotFound();
-            }
+		// GET: Menus/Delete/5
+		public async Task<IActionResult> Delete(int? id)
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				if (id == null)
+			{
+				return NotFound();
+			}
 
-            return View(menu);
-        }
+			var menu = await _context.Menu
+				.FirstOrDefaultAsync(m => m.id == id);
+			if (menu == null)
+			{
+				return NotFound();
+			}
 
-        // POST: Menus/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var menu = await _context.Menu.FindAsync(id);
-            if (menu != null)
-            {
-                _context.Menu.Remove(menu);
-            }
+			return View(menu);
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+			
+		}
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+		// POST: Menus/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> DeleteConfirmed(int id)
+		{
+			if (HomeController.isLoggedIn)
+			{
+				ViewData["login"] = HomeController.isLoggedIn;var menu = await _context.Menu.FindAsync(id);
+			if (menu != null)
+			{
+				_context.Menu.Remove(menu);
+			}
 
-        private bool MenuExists(int id)
-        {
-            return _context.Menu.Any(e => e.id == id);
-        }
-    }
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
+				
+			}
+			else
+			{
+				ViewData["login"] = HomeController.isLoggedIn;
+				return RedirectToAction("LoginAdmin", "Home");
+			}
+			
+		}
+
+		private bool MenuExists(int id)
+		{
+			return _context.Menu.Any(e => e.id == id);
+		}
+	}
 }
