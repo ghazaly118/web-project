@@ -82,7 +82,9 @@ namespace web_project.Controllers
         {
             if (isLoggedIn)
             {
-                    
+                isLoggedIn = true;
+                ViewData["login"] = isLoggedIn;
+
                 return View("Index");
             }
             else

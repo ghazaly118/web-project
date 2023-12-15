@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Restaurant</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">YTRIBLE-A</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,17 +35,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="menu">Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About us</a>
                         </li>
 						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="Complaints" asp-action="Create">contact us</a>
+							<a class="nav-link text-dark" asp-area="" asp-controller="Complaints" asp-action="Create">Contact us</a>
 						</li>
                     
                         
                         @if (!isLoggedIn)
                         {
 
-                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LoginAdmin" onclick="" >Admin Login</a></li>
+                            <li><a class="btn btn-success text-white mx-3 " asp-area="" asp-controller="Home" asp-action="LoginAdmin">Admin Login</a></li>
                         }
                         else
                         { <li class="nav-item">
@@ -55,8 +55,8 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Menus" asp-action="Index">All dishes</a>
                             </li>
            
-                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Complaints" asp-action="Index" onclick="">All Complaints</a></li>
-                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Logout" onclick="">Logout</a></li>
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="Complaints" asp-action="Index" onclick="">All Complains</a></li>
+                            <li><a class=" btn btn-success  text-white mx-3" asp-area="" asp-controller="Home" asp-action="Logout" >Logout</a></li>
 
                         }
 
@@ -79,6 +79,9 @@
         </div>
         <div class="container">
            For help or complaint   <a asp-area="" asp-controller="Complaints" asp-action="Create">Contact us</a>
+        </div>
+        <div class="container">
+           To see our menu and offers   <a asp-area="" asp-controller="Complaints" asp-action="menu">Menu</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

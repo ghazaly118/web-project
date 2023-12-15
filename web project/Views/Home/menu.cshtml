@@ -5,7 +5,7 @@
 }
 <body style=" background-color: burlywood">
     <div class="container mt-5">
-        <h1>Menu</h1>
+		<h1>Menu</h1><script src="/js/JavaScript.js"></script>
         <button class="btn btn-success mb-4 m" onclick="scrollToSection('appetizers')">Appetizers</button>
         <button class="btn btn-success mb-4"onclick="scrollToSection('main_courses')">Main Courses</button>
         <button class="btn btn-success mb-4" onclick="scrollToSection('desserts')"> Desserts</button>
@@ -21,13 +21,13 @@
                     {
 
                         <div class="card mb-2" style="background-color: blanchedalmond;">
-                            <div class="row no-gutters" >
+                            <div class="row-cols-4">
                                 <div class="col-md-2">
-                                    <img src="/pics/@item.Image" class="card-img" alt="Image">
+                                    <img src="/pics/Appertizers/@item.Image" class="card-img mt-2" alt="Image">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body">
-                                        <h2 class="card-title">@item.DishName</h2>
+                                        <h2 class="card-title col-sm-auto">@item.DishName</h2>
                                         <p class="flex-grow-1">@item.DishDiscription</p>
                                         <div class="flex-grow-1">
                                             <p class="btn btn-success mt-auto">@item.Price EGP</p>
@@ -52,9 +52,9 @@
 
                         
 					<div class="card mb-2" style="background-color: blanchedalmond;">
-                            <div class="row no-gutters">
+                            <div class="row-cols-4">
                                 <div class="col-md-2">
-                                    <img src="/pics/@item.Image" class="card-img" alt="Image">
+                                    <img src="/pics/main course/@item.Image" class="card-img mt-2" alt="Image">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body">
@@ -82,9 +82,9 @@
                     {
 
                         <div class="card mb-2 " style="background-color: blanchedalmond;">
-                            <div class="row no-gutters">
-                                <div class="col-md-2">
-                                    <img src="/pics/@item.Image" class="card-img" alt="Image">
+                            <div class="row-cols-4">
+                                <div class="col-md-2 ">
+                                    <img src="/pics/dessert/@item.Image" class="card-img mt-2" alt="Image">
                                 </div>
                                 <div class="col-md-10">
                                     <div class="card-body">
@@ -110,4 +110,3 @@
 </div>
   
 </body>
-<script src=~/js/JavaScript.js />
